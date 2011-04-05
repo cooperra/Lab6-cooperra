@@ -41,11 +41,11 @@ public class PrintBalance{
 		System.out.println(messages.getString("PrintBalance.1")); //$NON-NLS-1$
 		String name = scanInput.nextLine();
 		name = scanInput.nextLine();
-		System.out.println(messages.getString("PrintBalance.2") + " " + name); //$NON-NLS-1$
+		System.out.printf(messages.getString("PrintBalance.2")+"\n", name); //$NON-NLS-1$
 		
 		//print today's date, balance and bid goodbye
-		System.out.println(messages.getString("PrintBalance.3")+ " " + DateFormat.getDateInstance(0, currentLocale).format(today)); //$NON-NLS-1$
-		System.out.println(messages.getString("PrintBalance.4") + " " + NumberFormat.getCurrencyInstance(currentLocale).format(9876543.21)); //$NON-NLS-1$
+		System.out.printf(messages.getString("PrintBalance.3")+"\n", DateFormat.getDateInstance(0, currentLocale).format(today)); //$NON-NLS-1$
+		System.out.printf(messages.getString("PrintBalance.4")+"\n", NumberFormat.getCurrencyInstance(currentLocale).format(9876543.21)); //$NON-NLS-1$
 		System.out.println(messages.getString("PrintBalance.5")); //$NON-NLS-1$
 	}
 }
