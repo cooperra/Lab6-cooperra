@@ -1,4 +1,8 @@
+import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 
@@ -22,18 +26,27 @@ public class PrintBalance{
 		Scanner scanInput = new Scanner(System.in);
 		Date today = new Date();
 		
+		Locale[] locales = {new Locale("en","US"), new Locale("fr","FR"), new Locale("de","DE")};
+		
+		System.out.println("(0) en_US (1) fr_FR (2) de_DE");
+		int choice = scanInput.nextInt();
+		
+		Locale currentLocale = locales[choice];
+		ResourceBundle messages = ResourceBundle.getBundle("messages", currentLocale);
+		
 		//Greeting
-		System.out.println("Hello World");
+		System.out.println(messages.getString("PrintBalance.0")); //$NON-NLS-1$
 		
 		//Get User's Name
-		System.out.println("Please enter your name");
+		System.out.println(messages.getString("PrintBalance.1")); //$NON-NLS-1$
 		String name = scanInput.nextLine();
-		System.out.println("I am pleased to meet you " + name);
+		name = scanInput.nextLine();
+		System.out.println(messages.getString("PrintBalance.2") + " " + name); //$NON-NLS-1$
 		
 		//print today's date, balance and bid goodbye
-		System.out.println("As of : "+ today.toString());
-		System.out.println("You owe the school $9876543.21");
-		System.out.println("Good Bye");
+		System.out.println(messages.getString("PrintBalance.3")+ " " + DateFormat.getDateInstance(0, currentLocale).format(today)); //$NON-NLS-1$
+		System.out.println(messages.getString("PrintBalance.4") + " " + NumberFormat.getCurrencyInstance(currentLocale).format(9876543.21)); //$NON-NLS-1$
+		System.out.println(messages.getString("PrintBalance.5")); //$NON-NLS-1$
 	}
 }
 
